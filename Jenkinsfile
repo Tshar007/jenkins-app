@@ -11,7 +11,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Running build from GitHub repo"
-                sh './hello.sh'
+                // Execute hello.sh and print output
+                sh(script: './hello.sh', returnStdout: false)
             }
         }
         stage('Archive') {
