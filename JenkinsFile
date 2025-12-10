@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    triggers {
+        githubPush()   // <-- webhook trigger
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Run Script') {
+            steps {
+                sh '''
+                    chmod +x hello_param.sh
+                    ./hello_param.sh
+                '''
+            }
+        }
+
+        stage('Archive Output') {
+            steps {
+                archiveArtifacts artifacts: 'output.txt', fingerprint: true
+            }
+        }
+    }
+}
