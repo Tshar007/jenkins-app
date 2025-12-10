@@ -1,5 +1,3 @@
 #!/bin/bash
-echo "Running build from GitHub repo"
-ls -l
-bash hello.sh
+echo "Hello from GitHub!"
 
